@@ -1,0 +1,20 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "europe-southwest1-docker.pkg.dev/store-microservices-428520/image-registry/payments-ms",
+        "-f",
+        "dockerfile.prod",
+        "--platform=linux/amd64",
+        ".",
+      ]
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "europe-southwest1-docker.pkg.dev/store-microservices-428520/image-registry/payments-ms",
+      ]
+options:
+  logging: CLOUD_LOGGING_ONLY
